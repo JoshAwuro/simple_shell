@@ -46,23 +46,3 @@ void prompt(char **av, char **env)
 		handle_cmd(argv, env, path_parts, path_index);
 	}
 }
-
-/**
- * init_path - Initializes/populates the array of PATH dirs by extracting the
- *             the dirs from "PATH" ENVIRON VAR
- * @path_index: Pointer to the variable storing the number of PATH directories
- * @path_parts: Array to store the PATH directories
- *
- */
-
-void init_path(int *path_index, char *path_parts[])
-{
-	char *path = _getenv("PATH");
-	char *part = strtok(path, ":");
-
-	while (part != NULL && *path_index < MAX_COMMAND)
-	{
-		path_parts[(*path_index)++] = part;
-		part = strtok(NULL, ":");
-	}
-}
